@@ -1,0 +1,19 @@
+int Solution::bulbs(vector<int> &A) {
+    int flip_count = 0; // Number of times we flip the switches
+    
+    for (int i = 0; i < A.size(); ++i) {
+        // If flip_count is even, the bulb should be in its original state
+        // If flip_count is odd, the bulb should be in the flipped state
+        if (flip_count % 2 == 0) {
+            if (A[i] == 0) {
+                flip_count++; // We need to flip to turn this bulb on
+            }
+        } else {
+            if (A[i] == 1) {
+                flip_count++; // We need to flip to turn this bulb on (since it's currently off due to previous flips)
+            }
+        }
+    }
+    
+    return flip_count;
+}
